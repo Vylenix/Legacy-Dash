@@ -3,6 +3,7 @@
 using namespace geode::prelude;
 
 #include <Geode/modify/MenuLayer.hpp>
+#include <Geode/modify/LevelSearchLayer.hpp>
 
 class $modify(MenuLayerModifier, MenuLayer)
 {
@@ -14,20 +15,20 @@ class $modify(MenuLayerModifier, MenuLayer)
     }
 
     auto socialMediaMenu = this->getChildByID("social-media-menu");
-    auto twitterButton = static_cast<CCMenuItemSpriteExtra*>(socialMediaMenu->getChildByID("twitter-button"));
+    auto twitterButton = static_cast<CCMenuItemSpriteExtra *>(socialMediaMenu->getChildByID("twitter-button"));
     if (Mod::get()->getSettingValue<bool>("main-menu-remove-discord-twitch-social-media"))
     {
       socialMediaMenu->removeChildByID("twitch-button");
       socialMediaMenu->removeChildByID("discord-button");
     }
-    
+
     if (Mod::get()->getSettingValue<bool>("main-menu-old-socials-style"))
     {
       socialMediaMenu->getChildByID("robtop-logo-button")->setPositionY(10.25f);
       twitterButton->setPositionX(42.f);
       socialMediaMenu->getChildByID("youtube-button")->setPositionX(72.f);
     }
-    
+
     if (Mod::get()->getSettingValue<bool>("main-menu-pre-2.2-twitter-icon"))
     {
       auto oldTwitterIcon = CCSprite::create("gj_twIcon_001-old.png"_spr);
@@ -40,23 +41,23 @@ class $modify(MenuLayerModifier, MenuLayer)
       twitterButton->setNormalImage(oldTwitterIconNode);
       twitterButton->setContentSize(scaledSize);
     }
-    
+
     if (Mod::get()->getSettingValue<bool>("main-menu-pre-2.2-profile-button-placement"))
     {
       this->getChildByID("profile-menu")->getChildByID("profile-button")->setPositionX(26.f);
     }
-    
+
     if (Mod::get()->getSettingValue<bool>("main-menu-pre-2.2-main-button-placements"))
     {
       auto mainMenu = this->getChildByID("main-menu");
       mainMenu->getChildByID("icon-kit-button")->setPositionX(106.75f);
       mainMenu->getChildByID("editor-button")->setPositionX(322.25f);
     }
-    
+
     if (Mod::get()->getSettingValue<bool>("main-menu-pre-2.2-newgrounds-button"))
     {
       auto bottomMenu = this->getChildByID("bottom-menu");
-      auto newgroundsButton = static_cast<CCMenuItemSpriteExtra*>(bottomMenu->getChildByID("newgrounds-button"));
+      auto newgroundsButton = static_cast<CCMenuItemSpriteExtra *>(bottomMenu->getChildByID("newgrounds-button"));
       auto oldNewgroundsIcon = CCSprite::create("GJ_ngBtn_001-old.png"_spr);
       auto oldNewgroundsIconNode = CCNode::create();
       auto scaledSize = oldNewgroundsIcon->getContentSize();
@@ -72,6 +73,53 @@ class $modify(MenuLayerModifier, MenuLayer)
     {
       auto rightSideMenu = this->getChildByID("right-side-menu");
       rightSideMenu->removeChildByID("daily-chest-button");
+    }
+
+    return true;
+  }
+};
+
+class $modify(LevelSearchLayerModifier, LevelSearchLayer)
+{
+  bool init(int p0)
+  {
+    if (!LevelSearchLayer::init(p0))
+    {
+      return false;
+    }
+
+    if (Mod::get()->getSettingValue<bool>("level-search-layer-pre-2.2-search"))
+    {
+      auto searchButtonMenu = this->getChildByID("search-button-menu");
+      auto searchLevelButton = static_cast<CCMenuItemSpriteExtra *>(searchButtonMenu->getChildByID("search-level-button"));
+      auto searchUserButton = static_cast<CCMenuItemSpriteExtra *>(searchButtonMenu->getChildByID("search-user-button"));
+      searchButtonMenu->removeChildByID("clear-search-button");
+
+      auto searchButtonSprite = CCSprite::create("GJ_longBtn02_001-old.png"_spr);
+      auto searchButtonText = CCLabelBMFont::create("Search", "bigFont.fnt");
+      searchButtonText->setScale(0.6f);
+      searchButtonText->setAnchorPoint({0.5f, 0.5f});
+      searchButtonText->setPosition({44.875f, 16.25f});
+      searchButtonSprite->addChild(searchButtonText);
+
+      auto searchButtonSpriteNode = CCNode::create();
+      auto scaledSize = searchButtonSprite->getContentSize();
+      searchButtonSpriteNode->setContentSize(scaledSize);
+      searchButtonSprite->setPosition(scaledSize / 2);
+      searchButtonSpriteNode->addChild(searchButtonSprite);
+      searchLevelButton->setNormalImage(searchButtonSpriteNode);
+      searchLevelButton->setContentSize(scaledSize);
+      searchLevelButton->setPositionX(84.f);
+
+      auto searchUserButtonSprite = CCSprite::create("GJ_longBtn05_001-old.png"_spr);
+      auto searchUserButtonSpriteNode = CCNode::create();
+      auto scaledSize2 = searchUserButtonSprite->getContentSize();
+      searchUserButtonSpriteNode->setContentSize(scaledSize2);
+      searchUserButtonSprite->setPosition(scaledSize2 / 2);
+      searchUserButtonSpriteNode->addChild(searchUserButtonSprite);
+      searchUserButton->setNormalImage(searchUserButtonSpriteNode);
+      searchUserButton->setContentSize(scaledSize2);
+      searchUserButton->setPositionX(156.f);
     }
 
     return true;

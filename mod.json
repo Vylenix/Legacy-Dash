@@ -57,6 +57,16 @@
             "description": "Removes the addition of the 2.1 Daily Chest",
             "type": "bool",
             "default": false
+        },
+        "level-search-layer-title": {
+            "type": "title",
+            "name": "Level Search Layer"
+        },
+        "level-search-layer-pre-2.2-search": {
+            "name": "Pre-2.2 search",
+            "description": "Brings back the old search & user search buttons. Removes clear button though.",
+            "type": "bool",
+            "default": true
         }
     },
     "resources": {
