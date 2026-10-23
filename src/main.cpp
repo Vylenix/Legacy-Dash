@@ -95,7 +95,7 @@ class $modify(LevelSearchLayerModifier, LevelSearchLayer)
       auto searchUserButton = static_cast<CCMenuItemSpriteExtra *>(searchButtonMenu->getChildByID("search-user-button"));
       searchButtonMenu->removeChildByID("clear-search-button");
 
-      auto searchButtonSprite = CCSprite::create("GJ_longBtn02_001-old.png"_spr);
+      auto searchButtonSprite = CCSprite::createWithSpriteFrameName("GJ_longBtn02_001.png");
       auto searchButtonText = CCLabelBMFont::create("Search", "bigFont.fnt");
       searchButtonText->setScale(0.6f);
       searchButtonText->setAnchorPoint({0.5f, 0.5f});
