@@ -1,0 +1,35 @@
+{
+	"geode": "5.11.2",
+	"gd": {
+		"win": "2.2081",
+		"android": "2.2081",
+		"mac": "2.2081",
+		"ios": "2.2081"
+	},
+	"id": "vylenix.legacy-dash",
+	"name": "Legacy Dash",
+	"version": "v1.0.0",
+	"developer": "Vylenix",
+	"description": "",
+	"dependencies": {
+		"geode.node-ids": ">=v1.23.3"
+	},
+    "settings": {
+        "main-menu-title": {
+            "type": "title",
+            "name": "Main Menu"
+        },
+        "main-menu-remove-discord-twitch-social-media": {
+            "name": "Remove Discord & Twitch from Social Media",
+            "description": "This will remove the Discord & Twitch buttons from 2.2",
+            "type": "bool",
+            "default": true
+        },
+        "main-menu-remove-daily-chest": {
+            "name": "Remove daily chest",
+            "description": "Removes the addition of the 2.1 Daily Chest",
+            "type": "bool",
+            "default": false
+        }
+    }
+}
