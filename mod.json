@@ -73,6 +73,17 @@
             "description": "Brings back the old Most Downloaded & Most Liked textures & removes the Sent tab.",
             "type": "bool",
             "default": true
+        },
+        "level-search-layer-pre-2.2-top-right-menu-positioning": {
+            "name": "Pre-2.2 Top Right Menu Positioning",
+            "description": "This is the the menu for clear filters & advanced options (and also the lists if enabled)",
+            "type": "bool",
+            "default": true
+        },
+        "level-search-layer-remove-lists": {
+            "name": "Remove lists",
+            "type": "bool",
+            "default": false
         }
     },
     "resources": {

@@ -172,6 +172,21 @@ class $modify(LevelSearchLayerModifier, LevelSearchLayer)
       mostLikedButton->setPositionX(90.5f);
     }
 
+    auto otherFilterMenu = this->getChildByID("other-filter-menu");
+    if (Mod::get()->getSettingValue<bool>("level-search-layer-pre-2.2-top-right-menu-positioning"))
+    {
+      otherFilterMenu->setPosition(562.4f, 159.f);
+      
+      auto layout = typeinfo_cast<AxisLayout*>(otherFilterMenu->getLayout());
+      layout->setGap(12.f);
+      otherFilterMenu->updateLayout();
+    }
+    
+    if (Mod::get()->getSettingValue<bool>("level-search-layer-remove-lists"))
+    {
+      otherFilterMenu->removeChildByID("lists-button");
+    }
+
     return true;
   }
 };
