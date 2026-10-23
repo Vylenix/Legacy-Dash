@@ -40,6 +40,18 @@ class $modify(MenuLayerModifier, MenuLayer)
       twitterButton->setNormalImage(oldTwitterIconNode);
       twitterButton->setContentSize(scaledSize);
     }
+    
+    if (Mod::get()->getSettingValue<bool>("main-menu-pre-2.2-profile-button-placement"))
+    {
+      this->getChildByID("profile-menu")->getChildByID("profile-button")->setPositionX(26.f);
+    }
+    
+    if (Mod::get()->getSettingValue<bool>("main-menu-pre-2.2-main-button-placements"))
+    {
+      auto mainMenu = this->getChildByID("main-menu");
+      mainMenu->getChildByID("icon-kit-button")->setPositionX(106.75f);
+      mainMenu->getChildByID("editor-button")->setPositionX(322.25f);
+    }
 
     if (Mod::get()->getSettingValue<bool>("main-menu-remove-daily-chest"))
     {

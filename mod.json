@@ -32,8 +32,18 @@
             "default": true
         },
         "main-menu-pre-2.2-twitter-icon": {
-            "name": "Pre-2.2 twitter icon",
+            "name": "Pre-2.2 Twitter icon",
 			"description": "Note: This will add grain found in the 2.1 icon. It shouldn't be very noticable.",
+            "type": "bool",
+            "default": true
+        },
+        "main-menu-pre-2.2-profile-button-placement": {
+            "name": "Pre-2.2 Profile button placement",
+            "type": "bool",
+            "default": true
+        },
+        "main-menu-pre-2.2-main-button-placements": {
+            "name": "Pre-2.2 Main button placements",
             "type": "bool",
             "default": true
         },
