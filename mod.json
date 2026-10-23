@@ -63,8 +63,14 @@
             "name": "Level Search Layer"
         },
         "level-search-layer-pre-2.2-search": {
-            "name": "Pre-2.2 search",
+            "name": "Pre-2.2 Search",
             "description": "Brings back the old search & user search buttons. Removes clear button though.",
+            "type": "bool",
+            "default": true
+        },
+        "level-search-layer-pre-2.2-quick-search": {
+            "name": "Pre-2.2 Quick Search",
+            "description": "Brings back the old Most Downloaded & Most Liked textures & removes the Sent tab.",
             "type": "bool",
             "default": true
         }

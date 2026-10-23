@@ -122,6 +122,56 @@ class $modify(LevelSearchLayerModifier, LevelSearchLayer)
       searchUserButton->setPositionX(156.f);
     }
 
+    if (Mod::get()->getSettingValue<bool>("level-search-layer-pre-2.2-quick-search"))
+    {
+      auto quickSearchMenu = this->getChildByID("quick-search-menu");
+      auto mostDownloadedButton = static_cast<CCMenuItemSpriteExtra *>(quickSearchMenu->getChildByID("most-downloaded-button"));
+      auto mostLikedButton = static_cast<CCMenuItemSpriteExtra *>(quickSearchMenu->getChildByID("most-liked-button"));
+      quickSearchMenu->removeChildByID("sent-button");
+
+      auto mostDownloadedSprite = CCSprite::createWithSpriteFrameName("GJ_longBtn03_001.png");
+      auto mostDownloadedText = CCLabelBMFont::create("Most Downloaded", "bigFont.fnt");
+      mostDownloadedText->setScale(0.45f);
+      mostDownloadedText->setAnchorPoint({0.5f, 0.5f});
+      mostDownloadedText->setPosition({74.125f, 16.25f});
+      mostDownloadedSprite->addChild(mostDownloadedText);
+
+      auto mostDownloadedDownloadSprite = CCSprite::createWithSpriteFrameName("GJ_downloadsIcon_001.png");
+      mostDownloadedDownloadSprite->setPosition({154.394f, 15.25f});
+      mostDownloadedDownloadSprite->setScale(0.7f);
+
+      auto mostDownloadedSpriteNode = CCNode::create();
+      auto scaledSize = mostDownloadedSprite->getContentSize();
+      mostDownloadedSpriteNode->setContentSize(scaledSize);
+      mostDownloadedSprite->setPosition(scaledSize / 2);
+      mostDownloadedSpriteNode->addChild(mostDownloadedSprite);
+      mostDownloadedSpriteNode->addChild(mostDownloadedDownloadSprite);
+      mostDownloadedButton->setNormalImage(mostDownloadedSpriteNode);
+      mostDownloadedButton->setContentSize(scaledSize);
+      mostDownloadedButton->setPositionX(-90.5f);
+
+      auto mostLikedSprite = CCSprite::createWithSpriteFrameName("GJ_longBtn03_001.png");
+      auto mostLikedText = CCLabelBMFont::create("Most Liked", "bigFont.fnt");
+      mostLikedText->setScale(0.6f);
+      mostLikedText->setAnchorPoint({0.5f, 0.5f});
+      mostLikedText->setPosition({73.988f, 16.25f});
+      mostLikedSprite->addChild(mostLikedText);
+
+      auto mostLikedDownloadSprite = CCSprite::createWithSpriteFrameName("GJ_likesIcon_001.png");
+      mostLikedDownloadSprite->setPosition({144.113f, 17.f});
+      mostLikedDownloadSprite->setScale(0.7f);
+
+      auto mostLikedSpriteNode = CCNode::create();
+      auto scaledSize2 = mostLikedSprite->getContentSize();
+      mostLikedSpriteNode->setContentSize(scaledSize2);
+      mostLikedSprite->setPosition(scaledSize2 / 2);
+      mostLikedSpriteNode->addChild(mostLikedSprite);
+      mostLikedSpriteNode->addChild(mostLikedDownloadSprite);
+      mostLikedButton->setNormalImage(mostLikedSpriteNode);
+      mostLikedButton->setContentSize(scaledSize2);
+      mostLikedButton->setPositionX(90.5f);
+    }
+
     return true;
   }
 };
