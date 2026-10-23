@@ -13,11 +13,32 @@ class $modify(MenuLayerModifier, MenuLayer)
       return false;
     }
 
+    auto socialMediaMenu = this->getChildByID("social-media-menu");
+    auto twitterButton = static_cast<CCMenuItemSpriteExtra*>(socialMediaMenu->getChildByID("twitter-button"));
     if (Mod::get()->getSettingValue<bool>("main-menu-remove-discord-twitch-social-media"))
     {
-      auto socialMediaMenu = this->getChildByID("social-media-menu");
       socialMediaMenu->removeChildByID("twitch-button");
       socialMediaMenu->removeChildByID("discord-button");
+    }
+    
+    if (Mod::get()->getSettingValue<bool>("main-menu-old-socials-style"))
+    {
+      socialMediaMenu->getChildByID("robtop-logo-button")->setPositionY(10.25f);
+      twitterButton->setPositionX(42.f);
+      socialMediaMenu->getChildByID("youtube-button")->setPositionX(72.f);
+    }
+    
+    if (Mod::get()->getSettingValue<bool>("main-menu-pre-2.2-twitter-icon"))
+    {
+      auto oldTwitterIcon = CCSprite::create("gj_twIcon_001-old.png"_spr);
+      oldTwitterIcon->setScale(0.8f);
+      auto oldTwitterIconNode = CCNode::create();
+      auto scaledSize = oldTwitterIcon->getContentSize() * 0.8f;
+      oldTwitterIconNode->setContentSize(scaledSize);
+      oldTwitterIcon->setPosition(scaledSize / 2);
+      oldTwitterIconNode->addChild(oldTwitterIcon);
+      twitterButton->setNormalImage(oldTwitterIconNode);
+      twitterButton->setContentSize(scaledSize);
     }
 
     if (Mod::get()->getSettingValue<bool>("main-menu-remove-daily-chest"))

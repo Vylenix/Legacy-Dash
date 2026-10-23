@@ -25,11 +25,28 @@
             "type": "bool",
             "default": true
         },
+        "main-menu-old-socials-style": {
+            "name": "Pre-2.2 Socials Style",
+            "description": "Will restore the pre-2.2 placements of the social buttons.",
+            "type": "bool",
+            "default": true
+        },
+        "main-menu-pre-2.2-twitter-icon": {
+            "name": "Pre-2.2 twitter icon",
+			"description": "Note: This will add grain found in the 2.1 icon. It shouldn't be very noticable.",
+            "type": "bool",
+            "default": true
+        },
         "main-menu-remove-daily-chest": {
             "name": "Remove daily chest",
             "description": "Removes the addition of the 2.1 Daily Chest",
             "type": "bool",
             "default": false
         }
+    },
+    "resources": {
+        "sprites": [
+            "resources/*.png"
+        ]
     }
 }
