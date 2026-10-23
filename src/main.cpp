@@ -52,6 +52,21 @@ class $modify(MenuLayerModifier, MenuLayer)
       mainMenu->getChildByID("icon-kit-button")->setPositionX(106.75f);
       mainMenu->getChildByID("editor-button")->setPositionX(322.25f);
     }
+    
+    if (Mod::get()->getSettingValue<bool>("main-menu-pre-2.2-newgrounds-button"))
+    {
+      auto bottomMenu = this->getChildByID("bottom-menu");
+      auto newgroundsButton = static_cast<CCMenuItemSpriteExtra*>(bottomMenu->getChildByID("newgrounds-button"));
+      auto oldNewgroundsIcon = CCSprite::create("GJ_ngBtn_001-old.png"_spr);
+      auto oldNewgroundsIconNode = CCNode::create();
+      auto scaledSize = oldNewgroundsIcon->getContentSize();
+      oldNewgroundsIconNode->setContentSize(scaledSize);
+      oldNewgroundsIcon->setPosition(scaledSize / 2);
+      oldNewgroundsIconNode->addChild(oldNewgroundsIcon);
+      newgroundsButton->setNormalImage(oldNewgroundsIconNode);
+      newgroundsButton->setContentSize(scaledSize);
+      bottomMenu->updateLayout();
+    }
 
     if (Mod::get()->getSettingValue<bool>("main-menu-remove-daily-chest"))
     {

@@ -47,6 +47,12 @@
             "type": "bool",
             "default": true
         },
+        "main-menu-pre-2.2-newgrounds-button": {
+            "name": "Pre-2.2 Newgrounds button",
+			"description": "For some reason the pre-2.2 newgrounds button is bigger than the other buttons, for accuracy to look like 2.1 this can be enabled.",
+            "type": "bool",
+            "default": true
+        },
         "main-menu-remove-daily-chest": {
             "name": "Remove daily chest",
             "description": "Removes the addition of the 2.1 Daily Chest",
