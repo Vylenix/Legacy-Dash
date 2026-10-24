@@ -74,15 +74,30 @@
         },
         "level-search-layer-pre-2.2-search": {
             "name": "Pre-2.2 Search",
-            "description": "Brings back the old search & user search buttons. Removes clear button though.",
+            "description": "Brings back the old search & user search buttons, also removes clear button.",
             "type": "bool",
-            "default": true
+            "default": true,
+            "enable-if": "!level-search-layer-pre-2.0-search"
+        },
+        "level-search-layer-pre-2.0-search": {
+            "name": "Pre-2.0 Search",
+            "description": "Brings back the old search. Removes user search & clear button.",
+            "type": "bool",
+            "default": false,
+            "enable-if": "!level-search-layer-pre-2.2-search"
         },
         "level-search-layer-pre-2.2-quick-search": {
             "name": "Pre-2.2 Quick Search",
             "description": "Brings back the old Most Downloaded & Most Liked textures & removes the Sent tab.",
             "type": "bool",
-            "default": true
+            "default": true,
+            "enable-if": "!level-search-layer-pre-2.0-quick-search"
+        },
+        "level-search-layer-pre-2.0-quick-search": {
+            "name": "Pre-2.0 Quick Search",
+            "type": "bool",
+            "default": false,
+            "enable-if": "!level-search-layer-pre-2.2-quick-search"
         },
         "level-search-layer-pre-2.2-top-right-menu-positioning": {
             "name": "Pre-2.2 Top Right Menu Positioning",
@@ -104,6 +119,12 @@
             "name": "Remove Platformer length filter",
             "type": "bool",
             "default": false
+        },
+        "level-search-layer-remove-xl-filter": {
+            "name": "Remove XL length filter",
+            "type": "bool",
+            "default": false,
+            "enable-if": "level-search-layer-remove-plat-filter"
         },
         "daily-rewards-title": {
             "type": "title",
