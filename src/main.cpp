@@ -6,6 +6,7 @@ using namespace geode::prelude;
 #include <Geode/modify/LevelSearchLayer.hpp>
 #include <Geode/modify/RewardsPage.hpp>
 #include <Geode/modify/FollowRewardPage.hpp>
+#include <Geode/modify/OptionsLayer.hpp>
 
 class $modify(MenuLayerModifier, MenuLayer)
 {
@@ -71,9 +72,9 @@ class $modify(MenuLayerModifier, MenuLayer)
 
 class $modify(LevelSearchLayerModifier, LevelSearchLayer)
 {
-  bool init(int p0)
+  bool init(int type)
   {
-    if (!LevelSearchLayer::init(p0))
+    if (!LevelSearchLayer::init(type))
     {
       return false;
     }
@@ -300,5 +301,25 @@ class $modify(FollowRewardPageModifier, FollowRewardPage)
     }
 
     return true;
+  }
+};
+
+class $modify(OptionsLayerModifier, OptionsLayer)
+{
+  void customSetup()
+  {
+    OptionsLayer::customSetup();
+    
+    auto menu = static_cast<CCNode *>(this->getChildren()->objectAtIndex(0));
+    if (Mod::get()->getSettingValue<bool>("settings-remove-menu-music-option"))
+    {
+      menu->removeChildByID("menu-music-label");
+      menu->getChildByID("vault-menu")->removeChildByID("menu-music-toggle");
+    }
+    
+    if (Mod::get()->getSettingValue<bool>("settings-pre-2.2-back-button"))
+    {
+      menu->getChildByIDRecursive("exit-button")->setPosition({24.f, 17.f});
+    }
   }
 };

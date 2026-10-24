@@ -99,6 +99,22 @@
             "description": "Removes Twitch, Discord & Reddit from free rewards popup. This also replaces the Twitter logo with the old one.",
             "type": "bool",
             "default": false
+        },
+        "settings-title": {
+            "type": "title",
+            "name": "Settings Popup"
+        },
+        "settings-remove-menu-music-option": {
+            "name": "Remove Menu Music option",
+            "description": "This won't change the value of it, it will just hide it from the popup.",
+            "type": "bool",
+            "default": false
+        },
+        "settings-pre-2.2-back-button": {
+            "name": "Pre-2.2 Back button",
+            "description": "Re-adds the strange positioning of the back/close button for the popup.",
+            "type": "bool",
+            "default": true
         }
     },
     "resources": {
