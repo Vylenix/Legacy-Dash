@@ -44,9 +44,27 @@
             "type": "bool",
             "default": true
         },
+        "main-menu-remove-newgrounds-button": {
+            "name": "Remove Newgrounds button",
+            "description": "2.0 added newgrounds button",
+            "type": "bool",
+            "default": false,
+            "enable-if": "!main-menu-pre-2.2-newgrounds-button"
+        },
         "main-menu-remove-daily-chest": {
             "name": "Remove daily chest",
             "description": "Removes the addition of the 2.1 Daily Chest",
+            "type": "bool",
+            "default": false
+        },
+        "main-menu-pre-2.0-more-games-scale": {
+            "name": "Pre-2.0 More Games button size",
+            "type": "bool",
+            "default": false
+        },
+        "main-menu-remove-profile-button": {
+            "name": "Remove profile button",
+            "description": "Profiles were added in 2.0",
             "type": "bool",
             "default": false
         },

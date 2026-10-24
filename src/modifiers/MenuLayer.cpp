@@ -41,9 +41,9 @@ class $modify(MenuLayerModifier, MenuLayer)
             twitterButton->setContentSize(scaledSize);
         }
 
+        auto bottomMenu = this->getChildByID("bottom-menu");
         if (Mod::get()->getSettingValue<bool>("main-menu-pre-2.2-newgrounds-button"))
         {
-            auto bottomMenu = this->getChildByID("bottom-menu");
             auto newgroundsButton = static_cast<CCMenuItemSpriteExtra *>(bottomMenu->getChildByID("newgrounds-button"));
             auto oldNewgroundsIcon = CCSprite::create("GJ_ngBtn_001-old.png"_spr);
             auto oldNewgroundsIconNode = CCNode::create();
@@ -56,10 +56,27 @@ class $modify(MenuLayerModifier, MenuLayer)
             bottomMenu->updateLayout();
         }
 
+        if (Mod::get()->getSettingValue<bool>("main-menu-remove-newgrounds-button"))
+        {
+            bottomMenu->removeChildByID("newgrounds-button");
+            bottomMenu->updateLayout();
+        }
+
         if (Mod::get()->getSettingValue<bool>("main-menu-remove-daily-chest"))
         {
             auto rightSideMenu = this->getChildByID("right-side-menu");
             rightSideMenu->removeChildByID("daily-chest-button");
+        }
+
+        if (Mod::get()->getSettingValue<bool>("main-menu-pre-2.0-more-games-scale"))
+        {
+            this->getChildByID("more-games-menu")->getChildByID("more-games-button")->setScale(1.11f);
+        }
+
+        if (Mod::get()->getSettingValue<bool>("main-menu-remove-profile-button"))
+        {
+            this->removeChildByID("profile-menu");
+            this->removeChildByID("player-username");
         }
 
         return true;
