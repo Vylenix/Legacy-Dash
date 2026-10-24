@@ -79,11 +79,11 @@ class $modify(CreatorLayerModifier, CreatorLayer)
                 hofIcon,
                 [](CCMenuItemSpriteExtra *)
                 {
-                    FLAlertLayer::create(
-                        "Not implemented",
-                        "Hall of Fame is not actually implemented in this mod. It may be in the future if I figure out a way to do so but I doubt it.",
-                        "OK")
-                        ->show();
+                    auto searchObject = GJSearchObject::create(SearchType::HallOfFame);
+                    auto browserLayer = LevelBrowserLayer::create(searchObject);
+                    auto scene = CCScene::create();
+                    scene->addChild(browserLayer);
+                    CCDirector::get()->pushScene(CCTransitionFade::create(0.5f, scene));
                 });
             hofButton->setID("hof-button"_spr);
             hofButton->setContentSize({88.825f, 88.825f});
