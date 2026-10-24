@@ -115,6 +115,16 @@
             "description": "Re-adds the strange positioning of the back/close button for the popup.",
             "type": "bool",
             "default": true
+        },
+        "icon-kit-title": {
+            "type": "title",
+            "name": "Icon Kit"
+        },
+        "icon-kit-style": {
+            "type": "string",
+            "name": "Style",
+            "default": "2.2",
+            "one-of": ["2.2", "2.1", "2.0"]
         }
     },
     "resources": {
