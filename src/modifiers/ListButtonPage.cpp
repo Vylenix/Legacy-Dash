@@ -14,7 +14,6 @@ class $modify(ListButtonPageModifier, ListButtonPage)
             for (auto obj : CCArrayExt<CCNode *>(items))
             {
                 auto item = static_cast<GJItemIcon *>(obj->getChildren()->objectAtIndex(0));
-                item->setScale(0.85f);
                 if (auto lock = static_cast<CCSprite *>(item->getChildren()->objectAtIndex(1)))
                 {
                     static_cast<CCSprite *>(item->getChildren()->objectAtIndex(0))->setVisible(false);
