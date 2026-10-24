@@ -84,6 +84,21 @@
             "name": "Remove Platformer length filter",
             "type": "bool",
             "default": false
+        },
+        "daily-rewards-title": {
+            "type": "title",
+            "name": "Daily Rewards"
+        },
+        "daily-rewards-pre-2.2-free-sprite": {
+            "name": "Pre-2.2 Free button sprite",
+            "type": "bool",
+            "default": true
+        },
+        "daily-rewards-pre-2.2-free-socials": {
+            "name": "Pre-2.2 Free socials",
+            "description": "Removes Twitch, Discord & Reddit from free rewards popup. This also replaces the Twitter logo with the old one.",
+            "type": "bool",
+            "default": false
         }
     },
     "resources": {

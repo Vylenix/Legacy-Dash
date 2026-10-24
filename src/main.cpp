@@ -4,6 +4,8 @@ using namespace geode::prelude;
 
 #include <Geode/modify/MenuLayer.hpp>
 #include <Geode/modify/LevelSearchLayer.hpp>
+#include <Geode/modify/RewardsPage.hpp>
+#include <Geode/modify/FollowRewardPage.hpp>
 
 class $modify(MenuLayerModifier, MenuLayer)
 {
@@ -164,12 +166,12 @@ class $modify(LevelSearchLayerModifier, LevelSearchLayer)
     if (Mod::get()->getSettingValue<bool>("level-search-layer-pre-2.2-top-right-menu-positioning"))
     {
       otherFilterMenu->setPosition(562.4f, 159.f);
-      
+
       auto layout = typeinfo_cast<AxisLayout *>(otherFilterMenu->getLayout());
       layout->setGap(12.f);
       otherFilterMenu->updateLayout();
     }
-    
+
     if (Mod::get()->getSettingValue<bool>("level-search-layer-remove-lists"))
     {
       otherFilterMenu->removeChildByID("lists-button");
@@ -186,25 +188,115 @@ class $modify(LevelSearchLayerModifier, LevelSearchLayer)
     {
       auto lengthTiny = lengthFilterMenu->getChildByID("tiny-filter-button");
       lengthTiny->setPositionX(-117.625f);
-      static_cast<CCNode*>(lengthTiny->getChildren()->objectAtIndex(0))->setScale(0.5f);
-      
+      static_cast<CCNode *>(lengthTiny->getChildren()->objectAtIndex(0))->setScale(0.5f);
+
       auto lengthShort = lengthFilterMenu->getChildByID("short-filter-button");
       lengthShort->setPositionX(-57.562f);
-      static_cast<CCNode*>(lengthShort->getChildren()->objectAtIndex(0))->setScale(0.5f);
-      
+      static_cast<CCNode *>(lengthShort->getChildren()->objectAtIndex(0))->setScale(0.5f);
+
       auto lengthMedium = lengthFilterMenu->getChildByID("medium-filter-button");
       lengthMedium->setPositionX(13.125f);
-      static_cast<CCNode*>(lengthMedium->getChildren()->objectAtIndex(0))->setScale(0.5f);
-      
+      static_cast<CCNode *>(lengthMedium->getChildren()->objectAtIndex(0))->setScale(0.5f);
+
       auto lengthLong = lengthFilterMenu->getChildByID("long-filter-button");
       lengthLong->setPositionX(77.812f);
-      static_cast<CCNode*>(lengthLong->getChildren()->objectAtIndex(0))->setScale(0.5f);
-      
+      static_cast<CCNode *>(lengthLong->getChildren()->objectAtIndex(0))->setScale(0.5f);
+
       auto lengthXL = lengthFilterMenu->getChildByID("xl-filter-button");
       lengthXL->setPositionX(124.5f);
-      static_cast<CCNode*>(lengthXL->getChildren()->objectAtIndex(0))->setScale(0.5f);
+      static_cast<CCNode *>(lengthXL->getChildren()->objectAtIndex(0))->setScale(0.5f);
 
       lengthFilterMenu->removeChildByID("plat-filter-button");
+    }
+
+    return true;
+  }
+};
+
+class $modify(RewardsPageModifier, RewardsPage)
+{
+  bool init()
+  {
+    if (!RewardsPage::init())
+    {
+      return false;
+    }
+
+    if (Mod::get()->getSettingValue<bool>("daily-rewards-pre-2.2-free-sprite"))
+    {
+      auto menu = static_cast<CCNode *>(this->getChildren()->objectAtIndex(0));
+      auto freeButton = static_cast<CCMenuItemSpriteExtra *>(menu->getChildByID("main-menu")->getChildByID("free-button"));
+      auto freeButtonSprite = CCSprite::create("GJ_freeStuffBtn_001-old.png"_spr);
+      auto freeButtonSpriteNode = CCNode::create();
+      auto scaledSize = freeButtonSprite->getContentSize();
+      freeButtonSpriteNode->setContentSize(scaledSize);
+      freeButtonSprite->setPosition(scaledSize / 2);
+      freeButtonSpriteNode->addChild(freeButtonSprite);
+      freeButton->setNormalImage(freeButtonSpriteNode);
+      freeButton->setContentSize(scaledSize);
+    }
+
+    return true;
+  }
+};
+
+class $modify(FollowRewardPageModifier, FollowRewardPage)
+{
+  bool init()
+  {
+    if (!FollowRewardPage::init())
+    {
+      return false;
+    }
+
+    if (Mod::get()->getSettingValue<bool>("daily-rewards-pre-2.2-free-socials"))
+    {
+      if (this->m_mainLayer)
+      {
+        auto children = this->m_mainLayer->getChildren();
+
+        // Okay tiny rant here! Never fucking make a game again Robtop. This took me like 30 minutes to figure out because devtools cant figure out the fuckery that robtop made here. It made no sense and was entirely out of order and I had to figure this out myself by RANDOMLY entering a number to see if the index was valid. I love you robtop but I hate you robtop. Also yes it's a little unoptimized, I did try to optimize it a little bit but that resulted in more unreadable code. Oh well.
+        auto chestMenu = static_cast<CCNode *>(children->objectAtIndex(7));
+        auto youtubeChest = static_cast<CCNode *>(chestMenu->getChildren()->objectAtIndex(1));
+        auto twitterChest = static_cast<CCNode *>(chestMenu->getChildren()->objectAtIndex(2));
+        auto facebookChest = static_cast<CCNode *>(chestMenu->getChildren()->objectAtIndex(3));
+
+        youtubeChest->setPosition({85.f, -150.f});                                               // youtube
+        (static_cast<CCNode *>(youtubeChest->getChildren()->objectAtIndex(0)))->setScale(0.7f);  // youtube
+        twitterChest->setPosition({200.f, -150.f});                                              // twitter
+        (static_cast<CCNode *>(twitterChest->getChildren()->objectAtIndex(0)))->setScale(0.7f);  // twitter
+        facebookChest->setPosition({315.f, -150.f});                                             // facebook
+        (static_cast<CCNode *>(facebookChest->getChildren()->objectAtIndex(0)))->setScale(0.7f); // facebook
+
+        static_cast<CCNode *>(chestMenu->getChildren()->objectAtIndex(4))->setVisible(false); // twitch
+        static_cast<CCNode *>(chestMenu->getChildren()->objectAtIndex(5))->setVisible(false); // discord
+        static_cast<CCNode *>(chestMenu->getChildren()->objectAtIndex(6))->setVisible(false); // reddit
+
+        auto youtubeLabel = static_cast<CCNode *>(children->objectAtIndex(8));
+        auto twitterLabel = static_cast<CCNode *>(children->objectAtIndex(10));
+        auto twitterIcon = static_cast<CCSprite *>(children->objectAtIndex(11));
+        auto facebookLabel = static_cast<CCNode *>(children->objectAtIndex(12));
+
+        youtubeLabel->setPosition({169.5f, 200.f});                                       // youtube label
+        youtubeLabel->setScale(0.6f);                                                     // youtube label
+        static_cast<CCNode *>(children->objectAtIndex(9))->setPosition({169.5f, 142.f});  // youtube icon
+        twitterLabel->setPosition({284.5f, 200.f});                                       // twitter label
+        twitterLabel->setScale(0.6f);                                                     // twitter label
+        twitterIcon->setPosition({284.5f, 142.f});                                        // twitter icon
+        facebookLabel->setPosition({399.5f, 200.f});                                      // facebook label
+        facebookLabel->setScale(0.6f);                                                    // facebook label
+        static_cast<CCNode *>(children->objectAtIndex(13))->setPosition({399.5f, 142.f}); // facebook icon
+
+        static_cast<CCNode *>(children->objectAtIndex(14))->setVisible(false); // twitch label
+        static_cast<CCNode *>(children->objectAtIndex(15))->setVisible(false); // twitch icon
+        static_cast<CCNode *>(children->objectAtIndex(16))->setVisible(false); // discord label
+        static_cast<CCNode *>(children->objectAtIndex(17))->setVisible(false); // discord icon
+        static_cast<CCNode *>(children->objectAtIndex(18))->setVisible(false); // reddit label
+        static_cast<CCNode *>(children->objectAtIndex(19))->setVisible(false); // reddit icon
+
+        auto oldTwitterIcon = CCSprite::create("gj_twIcon_001-old.png"_spr);
+        twitterIcon->setDisplayFrame(oldTwitterIcon->displayFrame());
+      }
     }
 
     return true;
