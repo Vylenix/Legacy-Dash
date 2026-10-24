@@ -1,18 +1,18 @@
 {
-	"geode": "5.11.2",
-	"gd": {
-		"win": "2.2081",
-		"android": "2.2081",
-		"mac": "2.2081"
-	},
-	"id": "vylenix.legacy-dash",
-	"name": "Legacy Dash",
-	"version": "v1.0.0",
-	"developer": "Vylenix",
-	"description": "",
-	"dependencies": {
-		"geode.node-ids": ">=v1.23.3"
-	},
+    "geode": "5.11.2",
+    "gd": {
+        "win": "2.2081",
+        "android": "2.2081",
+        "mac": "2.2081"
+    },
+    "id": "vylenix.legacy-dash",
+    "name": "Legacy Dash",
+    "version": "v1.0.0",
+    "developer": "Vylenix",
+    "description": "",
+    "dependencies": {
+        "geode.node-ids": ">=v1.23.3"
+    },
     "settings": {
         "main-menu-title": {
             "type": "title",
@@ -32,13 +32,13 @@
         },
         "main-menu-pre-2.2-twitter-icon": {
             "name": "Pre-2.2 Twitter icon",
-			"description": "Note: This will add grain found in the 2.1 icon. It shouldn't be very noticable.",
+            "description": "Note: This will add grain found in the 2.1 icon. It shouldn't be very noticable.",
             "type": "bool",
             "default": true
         },
         "main-menu-pre-2.2-newgrounds-button": {
             "name": "Pre-2.2 Newgrounds button",
-			"description": "For some reason the pre-2.2 newgrounds button is bigger than the other buttons, for accuracy to look like 2.1 this can be enabled.",
+            "description": "For some reason the pre-2.2 newgrounds button is bigger than the other buttons, for accuracy to look like 2.1 this can be enabled.",
             "type": "bool",
             "default": true
         },
@@ -124,7 +124,11 @@
             "type": "string",
             "name": "Style",
             "default": "2.2",
-            "one-of": ["2.2", "2.1", "2.0"]
+            "one-of": [
+                "2.2",
+                "2.1",
+                "2.0"
+            ]
         },
         "creator-layer-title": {
             "type": "title",
@@ -134,7 +138,29 @@
             "type": "string",
             "name": "Style",
             "default": "2.2",
-            "one-of": ["2.2", "2.1"]
+            "one-of": [
+                "2.2",
+                "2.1"
+            ]
+        },
+        "pause-menu-title": {
+            "type": "title",
+            "name": "Pause Menu"
+        },
+        "pause-menu-pre-2.2-settings": {
+            "name": "Pre-2.2 Settings",
+            "type": "bool",
+            "default": true
+        },
+        "pause-menu-reset-button": {
+            "name": "Reset Button",
+            "type": "bool",
+            "default": false
+        },
+        "pause-menu-pre-2.2-button-spacing": {
+            "name": "Pre-2.2 Button spacing",
+            "type": "bool",
+            "default": true
         }
     },
     "resources": {
