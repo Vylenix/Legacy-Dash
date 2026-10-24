@@ -31,43 +31,65 @@ class $modify(CreatorLayerModifier, CreatorLayer)
         auto mapPacksButton = creatorButtonsMenu->getChildByID("map-packs-button");
         auto searchButton = creatorButtonsMenu->getChildByID("search-button");
 
-        if (style == "2.1") {
+        if (style == "2.1")
+        {
             versusButton->setVisible(false);
             mapButton->setVisible(false);
             eventButton->setVisible(false);
             listsButton->setVisible(false);
             pathsButton->setVisible(false);
 
-            createButton->setContentSize({ 88.825f, 88.825f});
-            createButton->setPosition({ 127.6f, 254.6f });
+            createButton->setContentSize({88.825f, 88.825f});
+            createButton->setPosition({127.6f, 254.6f});
             static_cast<CCSprite *>(createButton->getChildren()->objectAtIndex(0))->setScale(0.85f);
-            savedButton->setContentSize({ 88.825f, 88.825f});
-            savedButton->setPosition({ 227.6f, 254.6f });
+            savedButton->setContentSize({88.825f, 88.825f});
+            savedButton->setPosition({227.6f, 254.6f});
             static_cast<CCSprite *>(savedButton->getChildren()->objectAtIndex(0))->setScale(0.85f);
-            scoresButton->setContentSize({ 88.825f, 88.825f});
-            scoresButton->setPosition({ 327.6f, 254.6f });
+            scoresButton->setContentSize({88.825f, 88.825f});
+            scoresButton->setPosition({327.6f, 254.6f});
             static_cast<CCSprite *>(scoresButton->getChildren()->objectAtIndex(0))->setScale(0.85f);
-            questsButton->setContentSize({ 88.825f, 88.825f});
-            questsButton->setPosition({ 77.7f, 157.6f });
+            questsButton->setContentSize({88.825f, 88.825f});
+            questsButton->setPosition({77.7f, 157.6f});
             static_cast<CCSprite *>(questsButton->getChildren()->objectAtIndex(0))->setScale(0.85f);
-            dailyButton->setContentSize({ 88.825f, 88.825f});
-            dailyButton->setPosition({ 177.7f, 157.6f });
+            dailyButton->setContentSize({88.825f, 88.825f});
+            dailyButton->setPosition({177.7f, 157.6f});
             static_cast<CCSprite *>(dailyButton->getChildren()->objectAtIndex(0))->setScale(0.85f);
-            weeklyButton->setContentSize({ 88.825f, 88.825f});
-            weeklyButton->setPosition({ 277.7f, 157.6f });
+            weeklyButton->setContentSize({88.825f, 88.825f});
+            weeklyButton->setPosition({277.7f, 157.6f});
             static_cast<CCSprite *>(weeklyButton->getChildren()->objectAtIndex(0))->setScale(0.85f);
-            gauntletsButton->setContentSize({ 88.825f, 88.825f});
-            gauntletsButton->setPosition({ 377.7f, 157.6f });
+            gauntletsButton->setContentSize({88.825f, 88.825f});
+            gauntletsButton->setPosition({377.7f, 157.6f});
             static_cast<CCSprite *>(gauntletsButton->getChildren()->objectAtIndex(0))->setScale(0.85f);
-            featuredButton->setContentSize({ 88.825f, 88.825f});
-            featuredButton->setPosition({ 77.7f, 60.6f });
+            featuredButton->setContentSize({88.825f, 88.825f});
+            featuredButton->setPosition({77.7f, 60.6f});
             static_cast<CCSprite *>(featuredButton->getChildren()->objectAtIndex(0))->setScale(0.85f);
-            mapPacksButton->setContentSize({ 88.825f, 88.825f});
-            mapPacksButton->setPosition({ 277.7f, 60.6f });
+            mapPacksButton->setContentSize({88.825f, 88.825f});
+            mapPacksButton->setPosition({277.7f, 60.6f});
             static_cast<CCSprite *>(mapPacksButton->getChildren()->objectAtIndex(0))->setScale(0.85f);
-            searchButton->setContentSize({ 88.825f, 88.825f});
-            searchButton->setPosition({ 377.7f, 60.6f });
+            searchButton->setContentSize({88.825f, 88.825f});
+            searchButton->setPosition({377.7f, 60.6f});
             static_cast<CCSprite *>(searchButton->getChildren()->objectAtIndex(0))->setScale(0.85f);
+
+            auto oldFeaturedIcon = CCSprite::create("GJ_featuredBtn_001-old.png"_spr);
+            static_cast<CCSprite *>(featuredButton->getChildren()->objectAtIndex(0))->setDisplayFrame(oldFeaturedIcon->displayFrame());
+
+            auto hofIcon = CCSprite::create("GJ_fameBtn_001-old.png"_spr);
+            hofIcon->setScale(0.85f);
+            auto hofButton = CCMenuItemExt::createSpriteExtra(
+                hofIcon,
+                [](CCMenuItemSpriteExtra *)
+                {
+                    FLAlertLayer::create(
+                        "Not implemented",
+                        "Hall of Fame is not actually implemented in this mod. It may be in the future if I figure out a way to do so but I doubt it.",
+                        "OK")
+                        ->show();
+                });
+            hofButton->setID("hof-button"_spr);
+            hofButton->setContentSize({88.825f, 88.825f});
+            hofButton->setPosition({177.7f, 60.6f});
+            hofIcon->setPosition({41.8f, 41.8f});
+            creatorButtonsMenu->addChild(hofButton);
         }
 
         return true;
