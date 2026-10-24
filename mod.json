@@ -13,6 +13,8 @@
     "dependencies": {
         "geode.node-ids": ">=v1.23.3"
     },
+    "repository": "https://github.com/Vylenix/Legacy-Dash",
+    "early-load": true,
     "settings": {
         "main-menu-title": {
             "type": "title",
@@ -159,6 +161,15 @@
         },
         "pause-menu-pre-2.2-button-spacing": {
             "name": "Pre-2.2 Button spacing",
+            "type": "bool",
+            "default": true
+        },
+        "loading-screen-title": {
+            "type": "title",
+            "name": "Loading Screen"
+        },
+        "loading-screen-remove-cocos2d-fmod": {
+            "name": "Remove Cocos-2D & FMod",
             "type": "bool",
             "default": true
         }
