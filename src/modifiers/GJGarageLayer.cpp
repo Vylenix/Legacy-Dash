@@ -177,11 +177,14 @@ class $modify(GJGarageLayerModifier, GJGarageLayer)
             this->removeChildByID("bottom-left-corner");
             this->removeChildByID("bottom-right-corner");
 
-            auto usernameLock = this->getChildByID("username-lock");
-            usernameLock->setPositionX(usernameLock->getPositionX() + 15.75f);
-            auto usernameLabel = static_cast<CCLabelBMFont *>(this->getChildByID("username-label")->getChildren()->objectAtIndex(1));
-            usernameLabel->setFntFile("bigFont.fnt");
-            usernameLabel->setColor({255, 170, 50});
+            if (GJAccountManager::sharedState()->m_accountID > 0)
+            {
+                auto usernameLock = this->getChildByID("username-lock");
+                usernameLock->setPositionX(usernameLock->getPositionX() + 15.75f);
+                auto usernameLabel = static_cast<CCLabelBMFont *>(this->getChildByID("username-label")->getChildren()->objectAtIndex(1));
+                usernameLabel->setFntFile("bigFont.fnt");
+                usernameLabel->setColor({255, 170, 50});
+            }
         }
 
         return true;
