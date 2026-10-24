@@ -111,9 +111,6 @@ class $modify(CreatorLayerModifier, CreatorLayer)
             searchButton->setPosition({375.f, 58.f});
             searchButton->setScale(0.85f);
 
-            auto oldFeaturedSprite = CCSprite::create("GJ_featuredBtn_001-old.png"_spr);
-            static_cast<CCSprite *>(featuredButton->getChildren()->objectAtIndex(0))->setDisplayFrame(oldFeaturedSprite->displayFrame());
-
             auto hofSprite = CCSprite::create("GJ_fameBtn_001-old.png"_spr);
             auto hofButton = CCMenuItemExt::createSpriteExtra(
                 hofSprite,
@@ -132,6 +129,74 @@ class $modify(CreatorLayerModifier, CreatorLayer)
             hofButton->setPosition({175.f, 58.f});
             hofButton->setScale(0.85f);
             creatorButtonsMenu->addChild(hofButton);
+        }
+
+        if (style == "2.0")
+        {
+            questsButton->setVisible(false);
+            versusButton->setVisible(false);
+            mapButton->setVisible(false);
+            dailyButton->setVisible(false);
+            weeklyButton->setVisible(false);
+            eventButton->setVisible(false);
+            gauntletsButton->setVisible(false);
+            listsButton->setVisible(false);
+            pathsButton->setVisible(false);
+
+            createSprite->setScale(1.f);
+            createSprite->setAnchorPoint({0.f, 0.f});
+            createSprite->setPosition({0.f, 0.f});
+            createButton->setContentSize(createSprite->getContentSize());
+            createButton->setPosition({105.f, 220.f});
+            savedSprite->setScale(1.f);
+            savedSprite->setAnchorPoint({0.f, 0.f});
+            savedSprite->setPosition({0.f, 0.f});
+            savedButton->setContentSize(savedSprite->getContentSize());
+            savedButton->setPosition({225.f, 220.f});
+            scoresSprite->setScale(1.f);
+            scoresSprite->setAnchorPoint({0.f, 0.f});
+            scoresSprite->setPosition({0.f, 0.f});
+            scoresButton->setContentSize(scoresSprite->getContentSize());
+            scoresButton->setPosition({345.f, 220.f});
+            featuredSprite->setScale(1.f);
+            featuredSprite->setAnchorPoint({0.f, 0.f});
+            featuredSprite->setPosition({0.f, 0.f});
+            featuredButton->setContentSize(featuredSprite->getContentSize());
+            featuredButton->setPosition({105.f, 90.f});
+            mapPacksSprite->setScale(1.f);
+            mapPacksSprite->setAnchorPoint({0.f, 0.f});
+            mapPacksSprite->setPosition({0.f, 0.f});
+            mapPacksButton->setContentSize(mapPacksSprite->getContentSize());
+            mapPacksButton->setPosition({225.f, 90.f});
+            searchSprite->setScale(1.f);
+            searchSprite->setAnchorPoint({0.f, 0.f});
+            searchSprite->setPosition({0.f, 0.f});
+            searchButton->setContentSize(searchSprite->getContentSize());
+            searchButton->setPosition({345.f, 90.f});
+
+            this->removeChildByID("top-right-menu");
+            this->removeChildByID("bottom-right-menu");
+
+            auto topRightCorner = CCSprite::createWithSpriteFrameName("GJ_sideArt_001.png");
+            topRightCorner->setID("top-right-corner"_spr);
+            topRightCorner->setPosition({570.f, 321.f});
+            topRightCorner->setFlipX(true);
+            topRightCorner->setFlipY(true);
+            topRightCorner->setAnchorPoint({1, 1});
+            this->addChild(topRightCorner);
+
+            auto bottomRightCorner = CCSprite::createWithSpriteFrameName("GJ_sideArt_001.png");
+            bottomRightCorner->setID("bottom-right-corner"_spr);
+            bottomRightCorner->setPosition({570.f, -1.f});
+            bottomRightCorner->setFlipX(true);
+            bottomRightCorner->setAnchorPoint({1, 0});
+            this->addChild(bottomRightCorner);
+        }
+
+        if (style == "2.1" || style == "2.0")
+        {
+            auto oldFeaturedSprite = CCSprite::create("GJ_featuredBtn_001-old.png"_spr);
+            static_cast<CCSprite *>(featuredButton->getChildren()->objectAtIndex(0))->setDisplayFrame(oldFeaturedSprite->displayFrame());
         }
 
         return true;
