@@ -74,6 +74,16 @@
             "name": "Remove lists",
             "type": "bool",
             "default": false
+        },
+        "level-search-layer-pre-2.2-clock-star-positioning": {
+            "name": "Pre-2.2 Clock & Star positioning",
+            "type": "bool",
+            "default": true
+        },
+        "level-search-layer-remove-plat-filter": {
+            "name": "Remove Platformer length filter",
+            "type": "bool",
+            "default": false
         }
     },
     "resources": {

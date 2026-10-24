@@ -175,6 +175,38 @@ class $modify(LevelSearchLayerModifier, LevelSearchLayer)
       otherFilterMenu->removeChildByID("lists-button");
     }
 
+    auto lengthFilterMenu = this->getChildByID("length-filter-menu");
+    if (Mod::get()->getSettingValue<bool>("level-search-layer-pre-2.2-clock-star-positioning"))
+    {
+      lengthFilterMenu->getChildByID("clock-icon")->setPositionX(-162.938f);
+      lengthFilterMenu->getChildByID("star-filter-button")->setPositionX(162.688f);
+    }
+
+    if (Mod::get()->getSettingValue<bool>("level-search-layer-remove-plat-filter"))
+    {
+      auto lengthTiny = lengthFilterMenu->getChildByID("tiny-filter-button");
+      lengthTiny->setPositionX(-117.625f);
+      static_cast<CCNode*>(lengthTiny->getChildren()->objectAtIndex(0))->setScale(0.5f);
+      
+      auto lengthShort = lengthFilterMenu->getChildByID("short-filter-button");
+      lengthShort->setPositionX(-57.562f);
+      static_cast<CCNode*>(lengthShort->getChildren()->objectAtIndex(0))->setScale(0.5f);
+      
+      auto lengthMedium = lengthFilterMenu->getChildByID("medium-filter-button");
+      lengthMedium->setPositionX(13.125f);
+      static_cast<CCNode*>(lengthMedium->getChildren()->objectAtIndex(0))->setScale(0.5f);
+      
+      auto lengthLong = lengthFilterMenu->getChildByID("long-filter-button");
+      lengthLong->setPositionX(77.812f);
+      static_cast<CCNode*>(lengthLong->getChildren()->objectAtIndex(0))->setScale(0.5f);
+      
+      auto lengthXL = lengthFilterMenu->getChildByID("xl-filter-button");
+      lengthXL->setPositionX(124.5f);
+      static_cast<CCNode*>(lengthXL->getChildren()->objectAtIndex(0))->setScale(0.5f);
+
+      lengthFilterMenu->removeChildByID("plat-filter-button");
+    }
+
     return true;
   }
 };
