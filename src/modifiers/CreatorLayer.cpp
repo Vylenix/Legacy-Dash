@@ -31,6 +31,17 @@ class $modify(CreatorLayerModifier, CreatorLayer)
         auto mapPacksButton = creatorButtonsMenu->getChildByID("map-packs-button");
         auto searchButton = creatorButtonsMenu->getChildByID("search-button");
 
+        auto createSprite = static_cast<CCSprite *>(createButton->getChildren()->objectAtIndex(0));
+        auto savedSprite = static_cast<CCSprite *>(savedButton->getChildren()->objectAtIndex(0));
+        auto scoresSprite = static_cast<CCSprite *>(scoresButton->getChildren()->objectAtIndex(0));
+        auto questsSprite = static_cast<CCSprite *>(questsButton->getChildren()->objectAtIndex(0));
+        auto dailySprite = static_cast<CCSprite *>(dailyButton->getChildren()->objectAtIndex(0));
+        auto weeklySprite = static_cast<CCSprite *>(weeklyButton->getChildren()->objectAtIndex(0));
+        auto gauntletsSprite = static_cast<CCSprite *>(gauntletsButton->getChildren()->objectAtIndex(0));
+        auto featuredSprite = static_cast<CCSprite *>(featuredButton->getChildren()->objectAtIndex(0));
+        auto mapPacksSprite = static_cast<CCSprite *>(mapPacksButton->getChildren()->objectAtIndex(0));
+        auto searchSprite = static_cast<CCSprite *>(searchButton->getChildren()->objectAtIndex(0));
+
         if (style == "2.1")
         {
             versusButton->setVisible(false);
@@ -39,44 +50,73 @@ class $modify(CreatorLayerModifier, CreatorLayer)
             listsButton->setVisible(false);
             pathsButton->setVisible(false);
 
-            createButton->setContentSize({88.825f, 88.825f});
-            createButton->setPosition({127.6f, 254.6f});
-            static_cast<CCSprite *>(createButton->getChildren()->objectAtIndex(0))->setScale(0.85f);
-            savedButton->setContentSize({88.825f, 88.825f});
-            savedButton->setPosition({227.6f, 254.6f});
-            static_cast<CCSprite *>(savedButton->getChildren()->objectAtIndex(0))->setScale(0.85f);
-            scoresButton->setContentSize({88.825f, 88.825f});
-            scoresButton->setPosition({327.6f, 254.6f});
-            static_cast<CCSprite *>(scoresButton->getChildren()->objectAtIndex(0))->setScale(0.85f);
-            questsButton->setContentSize({88.825f, 88.825f});
-            questsButton->setPosition({77.7f, 157.6f});
-            static_cast<CCSprite *>(questsButton->getChildren()->objectAtIndex(0))->setScale(0.85f);
-            dailyButton->setContentSize({88.825f, 88.825f});
-            dailyButton->setPosition({177.7f, 157.6f});
-            static_cast<CCSprite *>(dailyButton->getChildren()->objectAtIndex(0))->setScale(0.85f);
-            weeklyButton->setContentSize({88.825f, 88.825f});
-            weeklyButton->setPosition({277.7f, 157.6f});
-            static_cast<CCSprite *>(weeklyButton->getChildren()->objectAtIndex(0))->setScale(0.85f);
-            gauntletsButton->setContentSize({88.825f, 88.825f});
-            gauntletsButton->setPosition({377.7f, 157.6f});
-            static_cast<CCSprite *>(gauntletsButton->getChildren()->objectAtIndex(0))->setScale(0.85f);
-            featuredButton->setContentSize({88.825f, 88.825f});
-            featuredButton->setPosition({77.7f, 60.6f});
-            static_cast<CCSprite *>(featuredButton->getChildren()->objectAtIndex(0))->setScale(0.85f);
-            mapPacksButton->setContentSize({88.825f, 88.825f});
-            mapPacksButton->setPosition({277.7f, 60.6f});
-            static_cast<CCSprite *>(mapPacksButton->getChildren()->objectAtIndex(0))->setScale(0.85f);
-            searchButton->setContentSize({88.825f, 88.825f});
-            searchButton->setPosition({377.7f, 60.6f});
-            static_cast<CCSprite *>(searchButton->getChildren()->objectAtIndex(0))->setScale(0.85f);
+            createSprite->setScale(1.f);
+            createSprite->setAnchorPoint({0.f, 0.f});
+            createSprite->setPosition({0.f, 0.f});
+            createButton->setContentSize(createSprite->getContentSize());
+            createButton->setPosition({125.f, 252.f});
+            createButton->setScale(0.85f);
+            savedSprite->setScale(1.f);
+            savedSprite->setAnchorPoint({0.f, 0.f});
+            savedSprite->setPosition({0.f, 0.f});
+            savedButton->setContentSize(savedSprite->getContentSize());
+            savedButton->setPosition({225.f, 252.f});
+            savedButton->setScale(0.85f);
+            scoresSprite->setScale(1.f);
+            scoresSprite->setAnchorPoint({0.f, 0.f});
+            scoresSprite->setPosition({0.f, 0.f});
+            scoresButton->setContentSize(scoresSprite->getContentSize());
+            scoresButton->setPosition({325.f, 252.f});
+            scoresButton->setScale(0.85f);
+            questsSprite->setScale(1.f);
+            questsSprite->setAnchorPoint({0.f, 0.f});
+            questsSprite->setPosition({0.f, 0.f});
+            questsButton->setContentSize(questsSprite->getContentSize());
+            questsButton->setPosition({75.f, 155.f});
+            questsButton->setScale(0.85f);
+            dailySprite->setScale(1.f);
+            dailySprite->setAnchorPoint({0.f, 0.f});
+            dailySprite->setPosition({0.f, 0.f});
+            dailyButton->setContentSize(dailySprite->getContentSize());
+            dailyButton->setPosition({175.f, 155.f});
+            dailyButton->setScale(0.85f);
+            weeklySprite->setScale(1.f);
+            weeklySprite->setAnchorPoint({0.f, 0.f});
+            weeklySprite->setPosition({0.f, 0.f});
+            weeklyButton->setContentSize(weeklySprite->getContentSize());
+            weeklyButton->setPosition({275.f, 155.f});
+            weeklyButton->setScale(0.85f);
+            gauntletsSprite->setScale(1.f);
+            gauntletsSprite->setAnchorPoint({0.f, 0.f});
+            gauntletsSprite->setPosition({0.f, 0.f});
+            gauntletsButton->setContentSize(gauntletsSprite->getContentSize());
+            gauntletsButton->setPosition({375.f, 155.f});
+            gauntletsButton->setScale(0.85f);
+            featuredSprite->setScale(1.f);
+            featuredSprite->setAnchorPoint({0.f, 0.f});
+            featuredSprite->setPosition({0.f, 0.f});
+            featuredButton->setContentSize(featuredSprite->getContentSize());
+            featuredButton->setPosition({75.f, 58.f});
+            featuredButton->setScale(0.85f);
+            mapPacksSprite->setScale(1.f);
+            mapPacksSprite->setAnchorPoint({0.f, 0.f});
+            mapPacksSprite->setPosition({0.f, 0.f});
+            mapPacksButton->setContentSize(mapPacksSprite->getContentSize());
+            mapPacksButton->setPosition({275.f, 58.f});
+            mapPacksButton->setScale(0.85f);
+            searchSprite->setScale(1.f);
+            searchSprite->setAnchorPoint({0.f, 0.f});
+            searchSprite->setPosition({0.f, 0.f});
+            searchButton->setContentSize(searchSprite->getContentSize());
+            searchButton->setPosition({375.f, 58.f});
+            searchButton->setScale(0.85f);
 
-            auto oldFeaturedIcon = CCSprite::create("GJ_featuredBtn_001-old.png"_spr);
-            static_cast<CCSprite *>(featuredButton->getChildren()->objectAtIndex(0))->setDisplayFrame(oldFeaturedIcon->displayFrame());
+            auto oldFeaturedSprite = CCSprite::create("GJ_featuredBtn_001-old.png"_spr);
+            static_cast<CCSprite *>(featuredButton->getChildren()->objectAtIndex(0))->setDisplayFrame(oldFeaturedSprite->displayFrame());
 
-            auto hofIcon = CCSprite::create("GJ_fameBtn_001-old.png"_spr);
-            hofIcon->setScale(0.85f);
+            auto hofSprite = CCSprite::create("GJ_fameBtn_001-old.png"_spr);
             auto hofButton = CCMenuItemExt::createSpriteExtra(
-                hofIcon,
+                hofSprite,
                 [](CCMenuItemSpriteExtra *)
                 {
                     auto searchObject = GJSearchObject::create(SearchType::HallOfFame);
@@ -85,10 +125,12 @@ class $modify(CreatorLayerModifier, CreatorLayer)
                     scene->addChild(browserLayer);
                     CCDirector::get()->pushScene(CCTransitionFade::create(0.5f, scene));
                 });
+            hofSprite->setAnchorPoint({0.f, 0.f});
+            hofSprite->setPosition({0.f, 0.f});
             hofButton->setID("hof-button"_spr);
-            hofButton->setContentSize({88.825f, 88.825f});
-            hofButton->setPosition({177.7f, 60.6f});
-            hofIcon->setPosition({41.8f, 41.8f});
+            hofButton->setContentSize(hofSprite->getContentSize());
+            hofButton->setPosition({175.f, 58.f});
+            hofButton->setScale(0.85f);
             creatorButtonsMenu->addChild(hofButton);
         }
 
