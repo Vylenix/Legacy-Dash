@@ -125,6 +125,16 @@
             "name": "Style",
             "default": "2.2",
             "one-of": ["2.2", "2.1", "2.0"]
+        },
+        "creator-layer-title": {
+            "type": "title",
+            "name": "Creator Layer"
+        },
+        "creator-layer-style": {
+            "type": "string",
+            "name": "Style",
+            "default": "2.2",
+            "one-of": ["2.2", "2.1"]
         }
     },
     "resources": {
