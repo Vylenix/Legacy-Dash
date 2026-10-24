@@ -36,16 +36,6 @@
             "type": "bool",
             "default": true
         },
-        "main-menu-pre-2.2-profile-button-placement": {
-            "name": "Pre-2.2 Profile button placement",
-            "type": "bool",
-            "default": true
-        },
-        "main-menu-pre-2.2-main-button-placements": {
-            "name": "Pre-2.2 Main button placements",
-            "type": "bool",
-            "default": true
-        },
         "main-menu-pre-2.2-newgrounds-button": {
             "name": "Pre-2.2 Newgrounds button",
 			"description": "For some reason the pre-2.2 newgrounds button is bigger than the other buttons, for accuracy to look like 2.1 this can be enabled.",
