@@ -15,52 +15,61 @@ class $modify(FollowRewardPageModifier, FollowRewardPage)
 
         if (Mod::get()->getSettingValue<bool>("daily-rewards-pre-2.2-free-socials"))
         {
-            if (this->m_mainLayer)
+            auto youtubeChest = this->getChildByIDRecursive("youtube-chest");
+            auto twitterChest = this->getChildByIDRecursive("twitter-chest");
+            auto facebookChest = this->getChildByIDRecursive("facebook-chest");
+
+            youtubeChest->setPosition({85.f, -150.f});
+            (static_cast<CCNode *>(youtubeChest->getChildren()->objectAtIndex(0)))->setScale(0.7f);
+            twitterChest->setPosition({200.f, -150.f});
+            (static_cast<CCNode *>(twitterChest->getChildren()->objectAtIndex(0)))->setScale(0.7f);
+            facebookChest->setPosition({315.f, -150.f});
+            (static_cast<CCNode *>(facebookChest->getChildren()->objectAtIndex(0)))->setScale(0.7f);
+
+            this->getChildByIDRecursive("twitch-chest")->setVisible(false);
+            this->getChildByIDRecursive("discord-chest")->setVisible(false);
+            this->getChildByIDRecursive("reddit-chest")->setVisible(false);
+            this->getChildByIDRecursive("spotlight-chest")->setVisible(false);
+
+            auto youtubeLabel = this->getChildByIDRecursive("youtube-label");
+            auto youtubeIcon = static_cast<CCSprite *>(this->getChildByIDRecursive("youtube-icon"));
+            auto twitterLabel = this->getChildByIDRecursive("twitter-label");
+            auto twitterIcon = static_cast<CCSprite *>(this->getChildByIDRecursive("twitter-icon"));
+            auto facebookLabel = this->getChildByIDRecursive("facebook-label");
+            auto facebookIcon = static_cast<CCSprite *>(this->getChildByIDRecursive("facebook-icon"));
+            auto twitchIcon = static_cast<CCSprite *>(this->getChildByIDRecursive("twitch-icon"));
+            auto discordIcon = static_cast<CCSprite *>(this->getChildByIDRecursive("discord-icon"));
+            auto redditIcon = static_cast<CCSprite *>(this->getChildByIDRecursive("reddit-icon"));
+            auto spotlightIcon = static_cast<CCSprite *>(this->getChildByIDRecursive("spotlight-icon"));
+
+            youtubeLabel->setPosition({169.5f, 200.f});
+            youtubeLabel->setScale(0.6f);
+            if (youtubeIcon)
+                youtubeIcon->setPosition({169.5f, 142.f});
+            twitterLabel->setPosition({284.5f, 200.f});
+            twitterLabel->setScale(0.6f);
+            if (twitterIcon)
+                twitterIcon->setPosition({284.5f, 142.f});
+            facebookLabel->setPosition({399.5f, 200.f});
+            facebookLabel->setScale(0.6f);
+            if (facebookIcon)
+                facebookIcon->setPosition({399.5f, 142.f});
+
+            this->getChildByIDRecursive("twitch-label")->setVisible(false);
+            if (twitchIcon)
+                twitchIcon->setVisible(false);
+            this->getChildByIDRecursive("discord-label")->setVisible(false);
+            if (discordIcon)
+                discordIcon->setVisible(false);
+            this->getChildByIDRecursive("reddit-label")->setVisible(false);
+            if (redditIcon)
+                redditIcon->setVisible(false);
+            this->getChildByIDRecursive("spotlight-label")->setVisible(false);
+            if (spotlightIcon)
+                spotlightIcon->setVisible(false);
+
+            if (twitterIcon)
             {
-                auto children = this->m_mainLayer->getChildren();
-
-                // Okay tiny rant here! Never fucking make a game again Robtop. This took me like 30 minutes to figure out because devtools cant figure out the fuckery that robtop made here. It made no sense and was entirely out of order and I had to figure this out myself by RANDOMLY entering a number to see if the index was valid. I love you robtop but I hate you robtop. Also yes it's a little unoptimized, I did try to optimize it a little bit but that resulted in more unreadable code. Oh well.
-                auto chestMenu = static_cast<CCNode *>(children->objectAtIndex(7));
-                auto youtubeChest = static_cast<CCNode *>(chestMenu->getChildren()->objectAtIndex(1));
-                auto twitterChest = static_cast<CCNode *>(chestMenu->getChildren()->objectAtIndex(2));
-                auto facebookChest = static_cast<CCNode *>(chestMenu->getChildren()->objectAtIndex(3));
-
-                youtubeChest->setPosition({85.f, -150.f});                                               // youtube
-                (static_cast<CCNode *>(youtubeChest->getChildren()->objectAtIndex(0)))->setScale(0.7f);  // youtube
-                twitterChest->setPosition({200.f, -150.f});                                              // twitter
-                (static_cast<CCNode *>(twitterChest->getChildren()->objectAtIndex(0)))->setScale(0.7f);  // twitter
-                facebookChest->setPosition({315.f, -150.f});                                             // facebook
-                (static_cast<CCNode *>(facebookChest->getChildren()->objectAtIndex(0)))->setScale(0.7f); // facebook
-
-                static_cast<CCNode *>(chestMenu->getChildren()->objectAtIndex(4))->setVisible(false); // twitch
-                static_cast<CCNode *>(chestMenu->getChildren()->objectAtIndex(5))->setVisible(false); // discord
-                static_cast<CCNode *>(chestMenu->getChildren()->objectAtIndex(6))->setVisible(false); // reddit
-                static_cast<CCNode *>(chestMenu->getChildren()->objectAtIndex(7))->setVisible(false); // spotlight
-
-                auto youtubeLabel = static_cast<CCNode *>(children->objectAtIndex(8));
-                auto twitterLabel = static_cast<CCNode *>(children->objectAtIndex(10));
-                auto twitterIcon = static_cast<CCSprite *>(children->objectAtIndex(11));
-                auto facebookLabel = static_cast<CCNode *>(children->objectAtIndex(12));
-
-                youtubeLabel->setPosition({169.5f, 200.f});                                       // youtube label
-                youtubeLabel->setScale(0.6f);                                                     // youtube label
-                static_cast<CCNode *>(children->objectAtIndex(9))->setPosition({169.5f, 142.f});  // youtube icon
-                twitterLabel->setPosition({284.5f, 200.f});                                       // twitter label
-                twitterLabel->setScale(0.6f);                                                     // twitter label
-                twitterIcon->setPosition({284.5f, 142.f});                                        // twitter icon
-                facebookLabel->setPosition({399.5f, 200.f});                                      // facebook label
-                facebookLabel->setScale(0.6f);                                                    // facebook label
-                static_cast<CCNode *>(children->objectAtIndex(13))->setPosition({399.5f, 142.f}); // facebook icon
-
-                static_cast<CCNode *>(children->objectAtIndex(14))->setVisible(false); // twitch label
-                static_cast<CCNode *>(children->objectAtIndex(15))->setVisible(false); // twitch icon
-                static_cast<CCNode *>(children->objectAtIndex(16))->setVisible(false); // discord label
-                static_cast<CCNode *>(children->objectAtIndex(17))->setVisible(false); // discord icon
-                static_cast<CCNode *>(children->objectAtIndex(18))->setVisible(false); // reddit label
-                static_cast<CCNode *>(children->objectAtIndex(19))->setVisible(false); // reddit icon
-                static_cast<CCNode *>(children->objectAtIndex(20))->setVisible(false); // spotlight label
-                static_cast<CCNode *>(children->objectAtIndex(21))->setVisible(false); // spotlight icon
-
                 auto oldTwitterIcon = CCSprite::create("gj_twIcon_001-old.png"_spr);
                 twitterIcon->setDisplayFrame(oldTwitterIcon->displayFrame());
             }
