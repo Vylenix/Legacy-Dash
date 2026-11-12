@@ -15,8 +15,7 @@ class $modify(RewardsPageModifier, RewardsPage)
 
         if (Mod::get()->getSettingValue<bool>("daily-rewards-pre-2.2-free-sprite"))
         {
-            auto menu = static_cast<CCNode *>(this->getChildren()->objectAtIndex(0));
-            auto freeButton = static_cast<CCMenuItemSpriteExtra *>(menu->getChildByID("main-menu")->getChildByID("free-button"));
+            auto freeButton = static_cast<CCMenuItemSpriteExtra *>(this->getChildByIDRecursive("free-button"));
             auto freeButtonSprite = CCSprite::create("GJ_freeStuffBtn_001-old.png"_spr);
             auto freeButtonSpriteNode = CCNode::create();
             auto scaledSize = freeButtonSprite->getContentSize();

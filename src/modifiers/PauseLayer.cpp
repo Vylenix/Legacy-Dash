@@ -10,7 +10,8 @@ class $modify(PauseLayerModifier, PauseLayer)
     {
         PauseLayer::customSetup();
 
-        auto centerButtonsMenu = this->getChildByID("center-button-menu");
+        auto mainLayer = this->getChildByID("main-layer");
+        auto centerButtonsMenu = mainLayer->getChildByID("center-button-menu");
 
         if (!Mod::get()->getSettingValue<bool>("pause-menu-reset-button"))
         {
@@ -26,7 +27,7 @@ class $modify(PauseLayerModifier, PauseLayer)
 
         if (Mod::get()->getSettingValue<bool>("pause-menu-pre-2.2-settings"))
         {
-            this->removeChildByID("right-button-menu");
+            mainLayer->removeChildByID("right-button-menu");
             auto bottomMenu = CCMenu::create();
             bottomMenu->setID("bottom-menu"_spr);
             bottomMenu->setPosition({0.f, 0.f});
@@ -69,7 +70,7 @@ class $modify(PauseLayerModifier, PauseLayer)
                         }
                     }
                     gm->m_showProgressBar = !sender->isToggled();
-                    gm->save();
+                    gm->save(false);
                 });
             progressBarToggle->setID("progress-toggle"_spr);
             progressBarToggle->setScale(0.6f);

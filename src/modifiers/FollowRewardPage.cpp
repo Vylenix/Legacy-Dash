@@ -35,6 +35,7 @@ class $modify(FollowRewardPageModifier, FollowRewardPage)
                 static_cast<CCNode *>(chestMenu->getChildren()->objectAtIndex(4))->setVisible(false); // twitch
                 static_cast<CCNode *>(chestMenu->getChildren()->objectAtIndex(5))->setVisible(false); // discord
                 static_cast<CCNode *>(chestMenu->getChildren()->objectAtIndex(6))->setVisible(false); // reddit
+                static_cast<CCNode *>(chestMenu->getChildren()->objectAtIndex(7))->setVisible(false); // spotlight
 
                 auto youtubeLabel = static_cast<CCNode *>(children->objectAtIndex(8));
                 auto twitterLabel = static_cast<CCNode *>(children->objectAtIndex(10));
@@ -57,6 +58,8 @@ class $modify(FollowRewardPageModifier, FollowRewardPage)
                 static_cast<CCNode *>(children->objectAtIndex(17))->setVisible(false); // discord icon
                 static_cast<CCNode *>(children->objectAtIndex(18))->setVisible(false); // reddit label
                 static_cast<CCNode *>(children->objectAtIndex(19))->setVisible(false); // reddit icon
+                static_cast<CCNode *>(children->objectAtIndex(20))->setVisible(false); // spotlight label
+                static_cast<CCNode *>(children->objectAtIndex(21))->setVisible(false); // spotlight icon
 
                 auto oldTwitterIcon = CCSprite::create("gj_twIcon_001-old.png"_spr);
                 twitterIcon->setDisplayFrame(oldTwitterIcon->displayFrame());

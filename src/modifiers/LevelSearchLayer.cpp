@@ -95,7 +95,7 @@ class $modify(LevelSearchLayerModifier, LevelSearchLayer)
             auto quickSearchMenu = this->getChildByID("quick-search-menu");
             auto mostDownloadedButton = static_cast<CCMenuItemSpriteExtra *>(quickSearchMenu->getChildByID("most-downloaded-button"));
             auto mostLikedButton = static_cast<CCMenuItemSpriteExtra *>(quickSearchMenu->getChildByID("most-liked-button"));
-            quickSearchMenu->removeChildByID("sent-button");
+            quickSearchMenu->removeChildByID("hyped-button");
 
             auto mostDownloadedSprite = CCSprite::createWithSpriteFrameName("GJ_longBtn03_001.png");
             auto mostDownloadedText = CCLabelBMFont::create("Most Downloaded", "bigFont.fnt");
@@ -145,7 +145,7 @@ class $modify(LevelSearchLayerModifier, LevelSearchLayer)
             auto quickSearchMenu = this->getChildByID("quick-search-menu");
             auto mostDownloadedButton = static_cast<CCMenuItemSpriteExtra *>(quickSearchMenu->getChildByID("most-downloaded-button"));
             auto mostLikedButton = static_cast<CCMenuItemSpriteExtra *>(quickSearchMenu->getChildByID("most-liked-button"));
-            quickSearchMenu->removeChildByID("sent-button");
+            quickSearchMenu->removeChildByID("hyped-button");
             quickSearchMenu->removeChildByID("awarded-button");
             quickSearchMenu->removeChildByID("followed-button");
             quickSearchMenu->removeChildByID("friends-button");

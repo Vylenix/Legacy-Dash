@@ -19,7 +19,7 @@ class $modify(OptionsLayerModifier, OptionsLayer)
 
         if (Mod::get()->getSettingValue<bool>("settings-pre-2.2-back-button"))
         {
-            menu->getChildByIDRecursive("exit-button")->setPosition({24.f, 17.f});
+            this->getChildByIDRecursive("exit-button")->setPosition({24.f, 17.f});
         }
     }
 };
