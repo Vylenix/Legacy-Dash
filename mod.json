@@ -11,7 +11,7 @@
     "developer": "Vylenix",
     "description": "",
     "dependencies": {
-        "geode.node-ids": ">=v1.23.3"
+        "geode.node-ids": "v1.24.0-beta.1"
     },
     "repository": "https://github.com/Vylenix/Legacy-Dash",
     "early-load": true,
